@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
 
-print("NAME:", __name__)
-app = Flask(__name__) 
-print(app)
 
 def create_app():
+
+    app = Flask(__name__) 
+
+
     @app.route("/")
     def index():
         x = 2 + 2
@@ -26,4 +27,3 @@ def create_app():
         
     return app
 
-app.run(port=5000)
