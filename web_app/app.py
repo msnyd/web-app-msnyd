@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 
 def create_app():
@@ -16,6 +16,13 @@ def create_app():
         return "About Me"
 
     @app.route("/books")
+    def books():
+        books = [
+            {"id": 1, "title": "Book 1"},
+            {"id": 2, "title": "Book 2"},
+            {"id": 3, "title": "Book 3"}
+        ]
+        return render_template("books.html")
     @app.route("/books.json")
     def list_books():
         books = [
@@ -23,7 +30,7 @@ def create_app():
             {"id": 2, "title": "Book 2"},
             {"id": 3, "title": "Book 3"}
         ]
-        return render_template("books.html")
+        return jsonify(books)
         
     return app
 
